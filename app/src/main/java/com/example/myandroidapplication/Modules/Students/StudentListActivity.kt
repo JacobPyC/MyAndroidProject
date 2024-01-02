@@ -1,4 +1,4 @@
-package com.example.myandroidapplication
+package com.example.myandroidapplication.Modules.Students
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,6 +12,7 @@ import android.widget.ListView
 import android.widget.TextView
 import com.example.myandroidapplication.Model.Model
 import com.example.myandroidapplication.Model.Student
+import com.example.myandroidapplication.R
 
 class StudentListActivity : AppCompatActivity() {
     var studentsListView:ListView?= null
