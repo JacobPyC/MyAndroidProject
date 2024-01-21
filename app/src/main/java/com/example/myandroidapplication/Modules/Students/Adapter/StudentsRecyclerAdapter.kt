@@ -7,7 +7,7 @@ import com.example.myandroidapplication.Model.Student
 import com.example.myandroidapplication.Modules.Students.StudentsRecyclerViewActivity
 import com.example.myandroidapplication.R
 
- class StudentsRecyclerAdapter (var students: MutableList<Student>?): RecyclerView.Adapter<StudentViewHolder>() {
+ class StudentsRecyclerAdapter (var students: List<Student>?): RecyclerView.Adapter<StudentViewHolder>() {
     var listener: StudentsRecyclerViewActivity.OnItemClickListener?=null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StudentViewHolder {

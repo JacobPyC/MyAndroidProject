@@ -9,7 +9,7 @@ import com.example.myandroidapplication.Model.Student
 import com.example.myandroidapplication.Modules.Students.StudentsRecyclerViewActivity
 import com.example.myandroidapplication.R
 
- class StudentViewHolder(val itemView: View, val listener: StudentsRecyclerViewActivity.OnItemClickListener?,  var students: MutableList<Student>? ) : RecyclerView.ViewHolder(itemView) {
+ class StudentViewHolder(val itemView: View, val listener: StudentsRecyclerViewActivity.OnItemClickListener?,  var students: List<Student>? ) : RecyclerView.ViewHolder(itemView) {
 
 
     var nameTextView: TextView? = null

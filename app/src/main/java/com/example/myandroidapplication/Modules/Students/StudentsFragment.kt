@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.ProgressBar
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,25 +18,36 @@ import com.example.myandroidapplication.R
 
 class StudentsFragment : Fragment() {
     var studentsRecyclerView: RecyclerView? = null
-    var students: MutableList<Student>? = null
+    var students: List<Student>? = null
+    var adapter:StudentsRecyclerAdapter?=null
+    var progressBar: ProgressBar?=null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         val view=  inflater.inflate(R.layout.fragment_students, container, false)
+progressBar = view.findViewById(R.id.progressBar)
 
-        students = Model.instance.students
+        progressBar?.visibility = View.VISIBLE
+        adapter = StudentsRecyclerAdapter(students)
 
-        studentsRecyclerView = view.findViewById(R.id.rvStudentsFragmentList)
+        Model.instance.getAllStudent{students ->
+            adapter?.students=students
+            adapter?.notifyDataSetChanged()
+            progressBar?.visibility = View.GONE
+        }
+
+            studentsRecyclerView = view.findViewById(R.id.rvStudentsFragmentList)
         studentsRecyclerView?.setHasFixedSize(true)
         //set the layout manager
         studentsRecyclerView?.layoutManager= LinearLayoutManager(context)
 //        //set the adapter
         studentsRecyclerView?.adapter = StudentsRecyclerAdapter(students)
 
-        val adapter = StudentsRecyclerAdapter(students )
-        adapter.listener = object : StudentsRecyclerViewActivity.OnItemClickListener {
+         adapter = StudentsRecyclerAdapter(students )
+        adapter?.listener = object : StudentsRecyclerViewActivity.OnItemClickListener {
             override fun onItemClick(position: Int) {
                 Log.i("TAG","StudentsRecyclerAdapter: Position Clicked $position")
                 val student = students?.get(position)
@@ -61,5 +73,17 @@ class StudentsFragment : Fragment() {
 
         return  view
     }
+    override fun onResume() {
 
+        super.onResume()
+        progressBar?.visibility = View.VISIBLE
+
+        Model.instance.getAllStudent{students ->
+            this.students=students
+            adapter?.students=students
+            adapter?.notifyDataSetChanged()
+            progressBar?.visibility = View.GONE
+
+        }
+    }
 }

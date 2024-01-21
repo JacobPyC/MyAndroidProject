@@ -7,20 +7,21 @@ import com.example.myandroidapplication.Model.Student
 import com.example.myandroidapplication.base.MyApplication
 import java.lang.IllegalStateException
 
-@Database(entities = [Student::class], version = 1)
+@Database(entities = [Student::class], version = 2)
 abstract class AppLocalDbRepository: RoomDatabase(){
     abstract fun studentDao(): StudentDao
 }
-object AppLocalDatabase {}
-val db: AppLocalDbRepository by lazy {
-    val context = MyApplication.Globals.appContext
-        ?: throw IllegalStateException("Application context not available")
-    Room.databaseBuilder(
-        context,
-        AppLocalDbRepository::class.java,
-        "dbFileName.db"
+object AppLocalDatabase {
+    val db: AppLocalDbRepository by lazy {
+        val context = MyApplication.Globals.appContext
+            ?: throw IllegalStateException("Application context not available")
+        Room.databaseBuilder(
+            context,
+            AppLocalDbRepository::class.java,
+            "dbFileName.db"
 
-    )
-        .fallbackToDestructiveMigration()
-        .build()
+        )
+            .fallbackToDestructiveMigration()
+            .build()
+    }
 }

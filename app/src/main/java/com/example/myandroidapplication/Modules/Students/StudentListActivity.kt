@@ -16,14 +16,15 @@ import com.example.myandroidapplication.R
 
 class StudentListActivity : AppCompatActivity() {
     var studentsListView:ListView?= null
-    var students:MutableList<Student>?=null
+    var students:List<Student>?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_student_list)
 
 
-        students = Model.instance.students
-
+         Model.instance.getAllStudent{students ->
+            this.students=students
+        }
         studentsListView= findViewById(R.id.lvStudentList)
         studentsListView?.adapter = StudentsListAdapter(students)
         studentsListView?.setOnItemClickListener{_,_,position,_ ->
@@ -31,7 +32,7 @@ class StudentListActivity : AppCompatActivity() {
 
         }
     }
-    class StudentsListAdapter(val students:MutableList<Student>?): BaseAdapter(){
+    class StudentsListAdapter(val students: List<Student>?): BaseAdapter(){
         override fun getCount(): Int = students?.size ?:0
 
         override fun getItem(position: Int): Any {

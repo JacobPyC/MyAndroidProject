@@ -11,6 +11,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.navigation.Navigation
+import com.example.myandroidapplication.Model.Model
+import com.example.myandroidapplication.Model.Student
 import com.example.myandroidapplication.R
 
 class AddStudentFragment : Fragment() {
@@ -39,6 +41,7 @@ class AddStudentFragment : Fragment() {
         messageTextView =  view.findViewById(R.id.tvAddStudentSave)
         saveButton = view.findViewById(R.id.btnAddStudentSave)
         cancelButton = view.findViewById(R.id.btnAddStudentCancel)
+          messageTextView?.text = ""
 
         cancelButton?.setOnClickListener{
             Navigation.findNavController(it).popBackStack(R.id.studentsFragment,false)
@@ -46,6 +49,12 @@ class AddStudentFragment : Fragment() {
         }
         saveButton?.setOnClickListener{
             val name  = nameTextField?.text.toString()
+            val id = idTextField?.text.toString()
+            val student = Student(name,id,"",false)
+            Model.instance.addStudent(student){
+                Navigation.findNavController(it).popBackStack(R.id.studentsFragment,false)
+
+            }
             messageTextView?.text=name
         }
     }
