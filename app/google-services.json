@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1027110826000",
+    "project_id": "colman-android-course-20-f2c01",
+    "storage_bucket": "colman-android-course-20-f2c01.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1027110826000:android:14d8ca673fd4d3308a9a95",
+        "android_client_info": {
+          "package_name": "com.example.myandroidapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDq7wYssZHhjDOUbqP4Nv76RnJ7_C_yJUQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

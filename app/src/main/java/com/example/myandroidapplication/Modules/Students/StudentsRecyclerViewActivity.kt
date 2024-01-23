@@ -1,5 +1,6 @@
 package com.example.myandroidapplication.Modules.Students
 
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.speech.ModelDownloadListener
@@ -15,14 +16,18 @@ import com.example.myandroidapplication.Model.Model
 import com.example.myandroidapplication.Model.Student
 import com.example.myandroidapplication.Modules.Students.Adapter.StudentsRecyclerAdapter
 import com.example.myandroidapplication.R
+import com.example.myandroidapplication.databinding.ActivityStudentsRecyclerViewBinding
 
 class StudentsRecyclerViewActivity : AppCompatActivity() {
     var studentsRecyclerView: RecyclerView? = null
     var students: List<Student>? = null
 var adapter:StudentsRecyclerAdapter?=null
+    private lateinit var binding:ActivityStudentsRecyclerViewBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_students_recycler_view)
+        binding= ActivityStudentsRecyclerViewBinding.inflate(layoutInflater)
+        setContentView(binding.root)
          adapter = StudentsRecyclerAdapter(students)
 
         Model.instance.getAllStudent{students ->
@@ -30,7 +35,7 @@ var adapter:StudentsRecyclerAdapter?=null
             adapter?.students=students
             adapter?.notifyDataSetChanged()
         }
-       studentsRecyclerView = findViewById(R.id.rvStudentRecyclerList)
+       studentsRecyclerView = binding.rvStudentRecyclerList
         studentsRecyclerView?.setHasFixedSize(true)
         studentsRecyclerView?.layoutManager = LinearLayoutManager(this)
     adapter?.listener = object :OnItemClickListener{

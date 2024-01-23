@@ -7,7 +7,7 @@ import com.example.myandroidapplication.Model.Student
 import com.example.myandroidapplication.base.MyApplication
 import java.lang.IllegalStateException
 
-@Database(entities = [Student::class], version = 2)
+@Database(entities = [Student::class], version = 3)
 abstract class AppLocalDbRepository: RoomDatabase(){
     abstract fun studentDao(): StudentDao
 }
