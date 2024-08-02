@@ -1,4 +1,4 @@
-package com.example.myandroidapplication.Modules.Students.Adapter
+package com.example.myandroidapplication.Adapter
 
 import android.util.Log
 import android.view.View

@@ -14,7 +14,6 @@ import androidx.navigation.Navigation
 import com.example.myandroidapplication.Model.Model
 import com.example.myandroidapplication.Model.Student
 import com.example.myandroidapplication.R
-
 class AddStudentFragment : Fragment() {
   private var nameTextField: EditText? =null
   private var idTextField: EditText? =  null
@@ -51,7 +50,8 @@ class AddStudentFragment : Fragment() {
             val name  = nameTextField?.text.toString()
             val id = idTextField?.text.toString()
             val student = Student(name,id,"",false)
-            Model.instance.addStudent(student){
+
+                Model.instance.addStudent(student){
                 Navigation.findNavController(it).popBackStack(R.id.studentsFragment,false)
 
             }

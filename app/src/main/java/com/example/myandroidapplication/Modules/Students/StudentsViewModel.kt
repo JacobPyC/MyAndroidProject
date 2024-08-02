@@ -4,5 +4,5 @@ import com.example.myandroidapplication.Model.Student
 
 class StudentsViewModel:ViewModel(){
 
-    var students: LiveData<List<Student>>? = null
+    var students: LiveData<MutableList<Student>>? = null
 }

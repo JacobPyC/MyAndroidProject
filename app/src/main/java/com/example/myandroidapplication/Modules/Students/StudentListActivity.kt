@@ -10,7 +10,6 @@ import android.widget.BaseAdapter
 import android.widget.CheckBox
 import android.widget.ListView
 import android.widget.TextView
-import com.example.myandroidapplication.Model.Model
 import com.example.myandroidapplication.Model.Student
 import com.example.myandroidapplication.R
 
@@ -22,9 +21,9 @@ class StudentListActivity : AppCompatActivity() {
         setContentView(R.layout.activity_student_list)
 
 
-         Model.instance.getAllStudent{students ->
-            this.students=students
-        }
+//         Model.instance.getAllStudent{students ->
+//            this.students=students
+//        }
         studentsListView= findViewById(R.id.lvStudentList)
         studentsListView?.adapter = StudentsListAdapter(students)
         studentsListView?.setOnItemClickListener{_,_,position,_ ->

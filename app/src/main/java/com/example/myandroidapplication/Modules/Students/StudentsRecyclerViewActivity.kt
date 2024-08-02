@@ -3,25 +3,19 @@ package com.example.myandroidapplication.Modules.Students
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.speech.ModelDownloadListener
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.CheckBox
-import android.widget.TextView
+
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myandroidapplication.Model.Model
 import com.example.myandroidapplication.Model.Student
-import com.example.myandroidapplication.Modules.Students.Adapter.StudentsRecyclerAdapter
+import com.example.myandroidapplication.Adapter.StudentsRecyclerAdapter
 import com.example.myandroidapplication.R
 import com.example.myandroidapplication.databinding.ActivityStudentsRecyclerViewBinding
 
 class StudentsRecyclerViewActivity : AppCompatActivity() {
     var studentsRecyclerView: RecyclerView? = null
     var students: List<Student>? = null
-var adapter:StudentsRecyclerAdapter?=null
+var adapter: StudentsRecyclerAdapter?=null
     private lateinit var binding:ActivityStudentsRecyclerViewBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,11 +24,11 @@ var adapter:StudentsRecyclerAdapter?=null
         setContentView(binding.root)
          adapter = StudentsRecyclerAdapter(students)
 
-        Model.instance.getAllStudent{students ->
-            this.students=students
-            adapter?.students=students
-            adapter?.notifyDataSetChanged()
-        }
+//        Model.instance.getAllStudent{students ->
+//            this.students=students
+//            adapter?.students=students
+//            adapter?.notifyDataSetChanged()
+//        }
        studentsRecyclerView = binding.rvStudentRecyclerList
         studentsRecyclerView?.setHasFixedSize(true)
         studentsRecyclerView?.layoutManager = LinearLayoutManager(this)
@@ -58,10 +52,10 @@ var adapter:StudentsRecyclerAdapter?=null
 
     override fun onResume() {
         super.onResume()
-        Model.instance.getAllStudent{students ->
-            this.students=students
-            adapter?.students=students
-            adapter?.notifyDataSetChanged()
-        }
+//        Model.instance.getAllStudent{students ->
+//            this.students=students
+//            adapter?.students=students
+//            adapter?.notifyDataSetChanged()
+//        }
     }
 }
