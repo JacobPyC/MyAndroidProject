@@ -27,30 +27,30 @@ class Model private  constructor(){
     interface  GetAllStudentsListener{
         fun onComplete(student: List<Student>)
     }
-fun getAllStudents():LiveData<MutableList<Student>>{
-    refreshAllStudents()
-    return students ?: database.studentDao().getAll()
-}
+    fun getAllStudents():LiveData<MutableList<Student>>{
+        refreshAllStudents()
+        return students ?: database.studentDao().getAll()
+    }
     fun refreshAllStudents(){
         studentsListLoadingState.value =LoadingState.LOADING
-      val lastUpdated:Long = Student.lastUpdated
+        val lastUpdated:Long = Student.lastUpdated
         firebaseModel.getAllStudent(lastUpdated){ List ->
             Log.i("TAG","Firebase returns  ${List.size}, lastUpdate:$lastUpdated")
 
-                    executer.execute {
-var time = lastUpdated
-                        for(student in List){
+            executer.execute {
+                var time = lastUpdated
+                for(student in List){
 
-                            database.studentDao().insert(student)
-                            student.lastUpdated?.let{
-                                if (time < it )
-                                    time = student.lastUpdated?: System.currentTimeMillis()
-                            }
+                    database.studentDao().insert(student)
+                    student.lastUpdated?.let{
+                        if (time < it )
+                            time = student.lastUpdated?: System.currentTimeMillis()
                     }
-                        Student.lastUpdated = time
-                        studentsListLoadingState.postValue(LoadingState.LOADED)
+                }
+                Student.lastUpdated = time
+                studentsListLoadingState.postValue(LoadingState.LOADED)
 
-                    }
+            }
         }
     }
 
@@ -61,6 +61,6 @@ var time = lastUpdated
             callback()
         }
     }
-  }
+}
 
 

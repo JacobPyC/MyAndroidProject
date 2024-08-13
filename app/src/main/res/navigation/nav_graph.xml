@@ -5,6 +5,7 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/studentsFragment">
 
+    <!-- Students Fragment -->
     <fragment
         android:id="@+id/studentsFragment"
         android:name="com.example.myandroidapplication.Modules.Students.StudentsFragment"
@@ -13,7 +14,23 @@
         <action
             android:id="@+id/action_studentsFragment_to_blueFragment"
             app:destination="@id/blueFragment" />
+        <action
+            android:id="@+id/action_studentsFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_studentsFragment_to_allPostsFragment"
+            app:destination="@id/allPostsFragment" />
+        <action
+            android:id="@+id/action_studentsFragment_to_userPostsFragment"
+            app:destination="@id/userPostsFragment" />
+        <action
+            android:id="@+id/action_studentsFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
     </fragment>
+
+
+
+    <!-- Blue Fragment -->
     <fragment
         android:id="@+id/blueFragment"
         android:name="com.example.myandroidapplication.BlueFragment"
@@ -23,10 +40,109 @@
             android:name="TITLE"
             app:argType="string" />
     </fragment>
+
+    <!-- Add Student Fragment -->
     <fragment
         android:id="@+id/addStudentFragment"
         android:name="com.example.myandroidapplication.Modules.AddStudent.AddStudentFragment"
         android:label="Add Student"
         tools:layout="@layout/fragment_add_student" />
-    <action android:id="@+id/action_global_addStudentFragment" app:destination="@id/addStudentFragment" />
+    <action
+        android:id="@+id/action_global_addStudentFragment"
+        app:destination="@id/addStudentFragment" />
+
+    <!-- Login Fragment -->
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.myandroidapplication.LoginFragment"
+        android:label="Login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_studentsFragment"
+            app:destination="@id/studentsFragment" />
+    </fragment>
+
+    <!-- All Posts Fragment -->
+    <fragment
+        android:id="@+id/allPostsFragment"
+        android:name="com.example.myandroidapplication.AllPostsFragment"
+        android:label="All Posts"
+        tools:layout="@layout/fragment_all_posts">
+        <action
+            android:id="@+id/action_allPostsFragment_to_createPostFragment"
+            app:destination="@id/createPostFragment" />
+        <action
+            android:id="@+id/action_allPostsFragment_to_editPostFragment"
+            app:destination="@id/editPostFragment">
+            <argument
+                android:name="postId"
+                app:argType="string" />
+        </action>
+    </fragment>
+
+    <!-- User Posts Fragment -->
+    <fragment
+        android:id="@+id/userPostsFragment"
+        android:name="com.example.myandroidapplication.UserPostsFragment"
+        android:label="User Posts"
+        tools:layout="@layout/fragment_user_posts">
+        <action
+            android:id="@+id/action_userPostsFragment_to_editPostFragment"
+            app:destination="@id/editPostFragment">
+            <argument
+                android:name="postId"
+                app:argType="string" />
+        </action>
+    </fragment>
+
+    <!-- Edit Profile Fragment -->
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.example.myandroidapplication.EditProfileFragment"
+        android:label="Edit Profile"
+        tools:layout="@layout/fragment_edit_profile">
+        <argument
+            android:name="userName"
+            app:argType="string" />
+        <argument
+            android:name="userImageUri"
+            app:argType="string" />
+    </fragment>
+
+    <!-- Edit Post Fragment -->
+    <fragment
+        android:id="@+id/editPostFragment"
+        android:name="com.example.myandroidapplication.Modules.Posts.EditPostFragment"
+        android:label="Edit Post"
+        tools:layout="@layout/fragment_edit_post">
+        <action
+            android:id="@+id/action_editPostFragment_to_gifListFragment"
+            app:destination="@id/gifListFragment" />
+        <argument
+            android:name="postId"
+            app:argType="string" />
+    </fragment>
+
+    <!-- Create Post Fragment -->
+    <fragment
+        android:id="@+id/createPostFragment"
+        android:name="com.example.myandroidapplication.Modules.AddPost.CreatePostFragment"
+        android:label="Create Post"
+        tools:layout="@layout/fragment_create_post">
+        <action
+            android:id="@+id/action_createPostFragment_to_allPostsFragment"
+            app:destination="@id/allPostsFragment" />
+        <action
+            android:id="@+id/action_createPostFragment_to_gifListFragment"
+            app:destination="@id/gifListFragment" />
+    </fragment>
+
+    <!-- Gif List Fragment -->
+    <fragment
+        android:id="@+id/gifListFragment"
+        android:name="com.example.myandroidapplication.GifListFragment"
+        android:label="GIF List"
+        tools:layout="@layout/fragment_gif_list" />
+
+
 </navigation>

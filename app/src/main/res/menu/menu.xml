@@ -3,8 +3,38 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/addStudentFragment"
+        android:id="@+id/addUserFragment"
         android:icon="@android:drawable/ic_input_add"
         android:title="Add"
         app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_edit_profile"
+        android:title="Edit Profile"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_all_posts"
+        android:title="All Posts"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_user_posts"
+        android:title="User Posts"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_sign_out"
+        android:title="Sign Out"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_sign_in"
+        android:title="Log In"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
 </menu>

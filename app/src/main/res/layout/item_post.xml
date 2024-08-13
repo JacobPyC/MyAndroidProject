@@ -1,0 +1,30 @@
+<!-- item_post.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/text_view_post_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Post Content" />
+
+    <ImageView
+        android:id="@+id/image_view_post"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_placeholder" />
+
+    <Button
+        android:id="@+id/button_edit_post"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit" />
+
+    <Button
+        android:id="@+id/button_delete_post"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete" />
+</LinearLayout>

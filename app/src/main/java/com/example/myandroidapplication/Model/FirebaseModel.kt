@@ -8,7 +8,7 @@ import com.google.firebase.firestore.memoryCacheSettings
 import com.google.firebase.ktx.Firebase
 
 class FirebaseModel {
- private   val db = Firebase.firestore
+    private   val db = Firebase.firestore
     companion object{
 
         const val STUDENT_COLLECTION_PATH = "students"
@@ -22,32 +22,36 @@ class FirebaseModel {
     }
 
     fun getAllStudent(since:Long ,callback: (List<Student>) -> Unit) {
-db.collection(STUDENT_COLLECTION_PATH).whereGreaterThanOrEqualTo(Student.LAST_UPDATED,Timestamp(since,0)).get().addOnCompleteListener{
-    when(it.isSuccessful){
-        true ->  {
-val students:MutableList<Student> = mutableListOf()
-            for(json in it.result){
+        db.collection(STUDENT_COLLECTION_PATH).whereGreaterThanOrEqualTo(Student.LAST_UPDATED,Timestamp(since,0)).get().addOnCompleteListener{
+            when(it.isSuccessful){
+                true ->  {
+                    val students:MutableList<Student> = mutableListOf()
+                    for(json in it.result){
 
 
-                val student = Student.fromJson(json.data)
-                students.add(student)
+                        val student = Student.fromJson(json.data)
+                        students.add(student)
+                    }
+                    callback(students)
+                }
+                false -> callback(listOf())
             }
-            callback(students)
         }
-        false -> callback(listOf())
-    }
-}
     }
 
     fun addStudent(student:Student,callback: () -> Unit) {
-db.collection(STUDENT_COLLECTION_PATH).document(student.id).set(student.json).addOnSuccessListener {
-    callback()
-    Log.w("TAG", "Student Added Successfully")
+        db.collection(STUDENT_COLLECTION_PATH).document(student.id).set(student.json).addOnSuccessListener {
+            callback()
+            Log.w("TAG", "Student Added Successfully")
 
-}.addOnFailureListener{ e ->
-    Log.w("TAG", "Error adding Student", e)
+        }.addOnFailureListener{ e ->
+            Log.w("TAG", "Error adding Student", e)
+
+        }
+    }
+
+
+
 
 }
-  }
 
-}

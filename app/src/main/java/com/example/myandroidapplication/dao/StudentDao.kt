@@ -13,7 +13,9 @@ interface StudentDao {
     @Query("Select * FROM Student")
     fun getAll():LiveData< MutableList<Student>>
     @Insert(onConflict = OnConflictStrategy.REPLACE)
+
     fun insert(vararg students:Student)
+
     @Delete
     fun delete (student: Student)
 

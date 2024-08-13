@@ -15,8 +15,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myandroidapplication.Model.Student
 import com.example.myandroidapplication.Adapter.StudentsRecyclerAdapter
 import com.example.myandroidapplication.Model.Model
-import com.example.myandroidapplication.Modules.Students.StudentsFragmentDirections
-import com.example.myandroidapplication.Modules.Students.StudentsRecyclerViewActivity
 import com.example.myandroidapplication.R
 import com.example.myandroidapplication.databinding.FragmentStudentsBinding
 
