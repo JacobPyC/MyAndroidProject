@@ -1,0 +1,5 @@
+
+Wkotlin:S6619 "8Remove this useless elvis operation ?:, it always fails.(åèŸØ8†µÂ¿Ó1
+qkotlin:S117%"NRename this parameter to match the regular expression ^`?[_a-z][a-zA-Z0-9]*`?$(ŸûÌºúÿÿÿÿ8ˆµÂ¿Ó1
+_kotlin:S6515"@Singleton pattern should use object declarations or expressions.(¹›ûù8µÂ¿Ó1
+fkotlin:S6517"BMake this interface functional or replace it with a function type.( ²¯Ôøÿÿÿÿ8‘µÂ¿Ó1
