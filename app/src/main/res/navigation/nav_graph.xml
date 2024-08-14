@@ -26,6 +26,10 @@
         <action
             android:id="@+id/action_studentsFragment_to_editProfileFragment"
             app:destination="@id/editProfileFragment" />
+        <action
+            android:id="@+id/action_studentsFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
+
     </fragment>
 
 
@@ -143,6 +147,22 @@
         android:name="com.example.myandroidapplication.GifListFragment"
         android:label="GIF List"
         tools:layout="@layout/fragment_gif_list" />
+
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.example.myandroidapplication.SignInFragment"
+        android:label="Sign In"
+        tools:layout="@layout/fragment_sign_in" >
+        <action
+            android:id="@+id/action_signInFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.example.myandroidapplication.SignUpFragment"
+        android:label="Sign Up"
+        tools:layout="@layout/fragment_sign_up" />
 
 
 </navigation>

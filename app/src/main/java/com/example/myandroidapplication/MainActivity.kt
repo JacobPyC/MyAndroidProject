@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
 
             R.id.action_sign_in -> {
 
-                navController?.navigate(R.id.action_studentsFragment_to_loginFragment)
+                navController?.navigate(R.id.action_studentsFragment_to_signInFragment)
                 true
             }
 
