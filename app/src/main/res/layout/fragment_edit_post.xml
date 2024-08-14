@@ -3,73 +3,84 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <Button
-        android:id="@+id/buttonSelectImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Select Image"
-        app:layout_constraintBottom_toTopOf="@+id/buttonSavePost"
+    android:layout_height="match_parent"
+    tools:context=".Modules.Posts.EditPostFragment">
+
+    <ImageView
+        android:id="@+id/imageViewPost"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:visibility="gone"
+        android:contentDescription="@string/post_image"
+        app:layout_constraintBottom_toTopOf="@+id/buttonSelectGif"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewPost" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3"
+        app:layout_constraintHorizontal_bias="0.5"
+        tools:srcCompat="@tools:sample/avatars" />
+
     <EditText
         android:id="@+id/editTextPostContent"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Post content"
-        app:layout_constraintBottom_toTopOf="@+id/buttonSavePost"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.465" />
-
-    <ImageView
-        android:id="@+id/imageViewPost"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/buttonSavePost"
+        android:hint="@string/post_content_hint"
+        app:layout_constraintBottom_toTopOf="@+id/buttonSelectGif"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPostContent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewPost"
+        app:layout_constraintHorizontal_bias="0.5"
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="60dp"/>
+        tools:layout_editor_absoluteY="100dp" />
 
     <Button
         android:id="@+id/buttonSelectGif"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Select GIF"
+        android:text="@string/select_gif"
         app:layout_constraintBottom_toTopOf="@+id/buttonSavePost"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewPost" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextPostContent"
+        app:layout_constraintHorizontal_bias="0.5"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="200dp" />
+
+    <Button
+        android:id="@+id/buttonSelectImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/select_image"
+        app:layout_constraintBottom_toTopOf="@+id/buttonSelectGif"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonSavePost"
+        app:layout_constraintHorizontal_bias="0.5"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="250dp" />
 
     <Button
         android:id="@+id/buttonSavePost"
-        android:layout_width="95dp"
-        android:layout_height="53dp"
-        android:text="Save"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonSelectGif" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonSelectGif"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_bias="0.8" />
 
     <Button
         android:id="@+id/buttonCancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cancel"
+        android:text="@string/cancel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.949"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonSavePost"
-        app:layout_constraintVertical_bias="0.884" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_bias="0.9" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

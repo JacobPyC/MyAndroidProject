@@ -21,6 +21,7 @@ import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.example.myandroidapplication.MainActivity
 import com.example.myandroidapplication.Model.Post
 import com.example.myandroidapplication.R
 import com.example.myandroidapplication.databinding.FragmentEditPostBinding
@@ -170,7 +171,11 @@ class EditPostFragment : Fragment() {
                     // Update the post in the ViewModel
                     postViewModel.updatePost(updatedPost) {
 
-                        findNavController().navigateUp()
+                        val intent = Intent(requireContext(), MainActivity::class.java)
+                        startActivity(intent)
+                        requireActivity().finish()  // Close the current fragment
+
+//go to all posts                        findNavController().navigateUp()
                     }
                 }
             }

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.myandroidapplication.Model.Post
+import com.example.myandroidapplication.R
 import com.example.myandroidapplication.databinding.ItemPostBinding
 
 class PostAdapter(
@@ -29,7 +30,9 @@ class PostAdapter(
                     binding.imageViewPost.visibility = ViewGroup.VISIBLE
                     post.contentUrl?.let { url ->
                         Glide.with(binding.root.context)
-                            .asBitmap() // Use asBitmap for both GIFs and images
+                            .asBitmap()
+                            .error(
+                                R.drawable.batman)// Use asBitmap for both GIFs and images
                             .load(url)
                             .into(binding.imageViewPost)
                     }

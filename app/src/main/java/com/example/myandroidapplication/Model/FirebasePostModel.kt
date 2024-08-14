@@ -7,6 +7,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.myandroidapplication.dao.AppLocalDatabase
+import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import kotlinx.coroutines.CoroutineScope
@@ -32,27 +33,22 @@ class FirebasePostModel {
             }
 
             if (snapshot != null) {
-                val posts = snapshot.toObjects(Post::class.java)
-                updateLocalDatabase(posts)
-            }
-        }
-    }
-
-    private fun updateLocalDatabase(posts: List<Post>) {
-        CoroutineScope(Dispatchers.IO).launch {
-            val existingPosts = postDao.getAllPosts().value.orEmpty()
-            val postsToInsert = posts.filterNot { existingPosts.contains(it) }
-            val postsToUpdate = posts.filter { existingPosts.contains(it) }
-            val postsToDelete = existingPosts.filterNot { posts.contains(it) }
-
-            if (postsToDelete.isNotEmpty()) {
-                postDao.deleteAll(postsToDelete)
-            }
-            if (postsToInsert.isNotEmpty()) {
-                postDao.insertAll(postsToInsert)
-            }
-            if (postsToUpdate.isNotEmpty()) {
-                postDao.updateAll(postsToUpdate)
+                CoroutineScope(Dispatchers.IO).launch {
+                    for (docChange in snapshot.documentChanges) {
+                        val post = docChange.document.toObject(Post::class.java)
+                        when (docChange.type) {
+                            DocumentChange.Type.ADDED -> {
+                                postDao.insert(post)
+                            }
+                            DocumentChange.Type.MODIFIED -> {
+                                postDao.update(post)
+                            }
+                            DocumentChange.Type.REMOVED -> {
+                                postDao.delete(post)
+                            }
+                        }
+                    }
+                }
             }
         }
     }
@@ -83,7 +79,7 @@ class FirebasePostModel {
                 } ?: emptyList()
 
                 CoroutineScope(Dispatchers.IO).launch {
-                    updateLocalDatabase(posts)
+                    posts.forEach { postDao.insert(it) }
                 }
             }
     }
@@ -106,7 +102,7 @@ class FirebasePostModel {
 
                 // Cache posts locally in Room
                 CoroutineScope(Dispatchers.IO).launch {
-                    updateLocalDatabase(posts)
+                    posts.forEach { postDao.insert(it) }
                 }
             }
         return liveData
@@ -155,7 +151,6 @@ class FirebasePostModel {
             "textContent" to post.textContent,
             "timestamp" to post.timestamp,
             "userId" to post.userId
-            // Ensure no redundant fields are included
         )
 
         postsCollection.document(post.id)
@@ -173,7 +168,6 @@ class FirebasePostModel {
                 callback(false)
             }
     }
-
 
     fun deletePost(post: Post, callback: (Boolean) -> Unit) {
         postsCollection.document(post.id)

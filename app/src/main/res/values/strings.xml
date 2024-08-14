@@ -17,5 +17,8 @@
     <string name="select_image">select image</string>
     <string name="description_media">Media preview</string>
     <string name="search_gifs_hint">Search GIFs</string>
+    <string name="save">save</string>
+    <string name="cancel">cancel\n</string>
+    <string name="post_image">post image</string>
 </resources>
 
