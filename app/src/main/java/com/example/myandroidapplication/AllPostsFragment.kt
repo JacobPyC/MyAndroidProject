@@ -37,7 +37,6 @@ class AllPostsFragment : Fragment() {
             currentUserId = currentUserId,
             onEditClick = { post -> openEditPost(post) },
             onDeleteClick = { post -> deletePost(post) },
-            postViewModel = postViewModel
         )
 
         recyclerView.adapter = postAdapter
