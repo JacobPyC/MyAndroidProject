@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.myandroidapplication.Model.Post
-import com.example.myandroidapplication.R
 import com.example.myandroidapplication.databinding.ItemPostBinding
 
 class PostAdapter(
@@ -15,7 +14,6 @@ class PostAdapter(
     private val currentUserId: String,
     private val onEditClick: (Post) -> Unit,
     private val onDeleteClick: (Post) -> Unit,
-    private val postViewModel: PostViewModel // Include postViewModel
 ) : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
 
     inner class PostViewHolder(private val binding: ItemPostBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -26,13 +24,20 @@ class PostAdapter(
                 Post.ContentType.TEXT -> {
                     binding.imageViewPost.visibility = ViewGroup.GONE
                 }
-                Post.ContentType.IMAGE, Post.ContentType.GIF -> {
+                Post.ContentType.IMAGE -> {
                     binding.imageViewPost.visibility = ViewGroup.VISIBLE
                     post.contentUrl?.let { url ->
                         Glide.with(binding.root.context)
-                            .asBitmap()
-                            .error(
-                                R.drawable.batman)// Use asBitmap for both GIFs and images
+                            .asBitmap()  // Load as bitmap for images
+                            .load(url)
+                            .into(binding.imageViewPost)
+                    }
+                }
+                Post.ContentType.GIF -> {
+                    binding.imageViewPost.visibility = ViewGroup.VISIBLE
+                    post.contentUrl?.let { url ->
+                        Glide.with(binding.root.context)
+                            .asGif()  // Load as GIF for GIFs
                             .load(url)
                             .into(binding.imageViewPost)
                     }
@@ -69,9 +74,8 @@ class PostAdapter(
     override fun getItemCount(): Int = posts.size
 
     fun updatePosts(newPosts: List<Post>) {
-            Log.d("PostAdapter", "Updating posts list. New size: ${newPosts.size}")
-            this.posts = newPosts
-            notifyDataSetChanged()
-
+        Log.d("PostAdapter", "Updating posts list. New size: ${newPosts.size}")
+        this.posts = newPosts
+        notifyDataSetChanged()
     }
 }
