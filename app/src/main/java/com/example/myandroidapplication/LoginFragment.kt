@@ -1,6 +1,5 @@
 package com.example.myandroidapplication
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -8,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.myandroidapplication.Model.User
@@ -66,24 +64,9 @@ class LoginFragment : Fragment() {
 
     }
 
-    private val signInLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-        if (result.resultCode == Activity.RESULT_OK) {
-            val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
-            try {
-                val account = task.getResult(ApiException::class.java)
-                Log.d(TAG, "firebaseAuthWithGoogle: ${account.id}")
-                firebaseAuthWithGoogle(account)
-            } catch (e: ApiException) {
-                Log.w(TAG, "Google sign in failed", e)
-                updateUI(null)
-            }
-        }
-    }
-
     private fun signIn() {
         val signInIntent = googleSignInClient.signInIntent
         startActivityForResult(signInIntent, RC_SIGN_IN)
-//        signInLauncher.launch(signInIntent);
     }
 
 
