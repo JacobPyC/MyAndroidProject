@@ -62,7 +62,7 @@ class LoginFragment : Fragment() {
             signIn()
         }
 
-        // Set click listener for other button
+        // Set click listener for other button (example)
         view.findViewById<Button>(R.id.otherButton).setOnClickListener {
             // Handle other button action here
         }
@@ -73,8 +73,6 @@ class LoginFragment : Fragment() {
         startActivityForResult(signInIntent, RC_SIGN_IN)
     }
 
-
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -82,7 +80,7 @@ class LoginFragment : Fragment() {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
                 val account = task.getResult(ApiException::class.java)
-                Log.d(TAG, "firebaseAuthWithGoogle: " + account.id)
+                Log.d(TAG, "firebaseAuthWithGoogle: ${account.id}")
                 firebaseAuthWithGoogle(account)
             } catch (e: ApiException) {
                 Log.w(TAG, "Google sign in failed", e)
@@ -92,23 +90,27 @@ class LoginFragment : Fragment() {
     }
 
     private fun firebaseAuthWithGoogle(account: GoogleSignInAccount?) {
-        Log.d(TAG, "firebaseAuthWithGoogle:" + account?.id)
+        Log.d(TAG, "firebaseAuthWithGoogle: ${account?.idToken}")
         account?.let {
             val credential = GoogleAuthProvider.getCredential(it.idToken, null)
             auth.signInWithCredential(credential)
                 .addOnCompleteListener(requireActivity()) { task ->
                     if (task.isSuccessful) {
                         val user = auth.currentUser
-                        Log.d(TAG, "signInWithCredential:success")
+                        Log.d(TAG, "signInWithCredential: success. User: ${user?.email}")
                         saveUserData(user, it) // Save user data to Firestore
                         updateUI(user)
                     } else {
-                        Log.w(TAG, "signInWithCredential:failure", task.exception)
+                        Log.w(TAG, "signInWithCredential: failure", task.exception)
                         updateUI(null)
                     }
                 }
+                .addOnFailureListener { e ->
+                    Log.e(TAG, "signInWithCredential: failure during sign-in", e)
+                }
         }
     }
+
     private fun saveUserData(user: FirebaseUser?, account: GoogleSignInAccount) {
         user?.let {
             CoroutineScope(Dispatchers.IO).launch {
@@ -138,7 +140,6 @@ class LoginFragment : Fragment() {
             }
         }
     }
-
 
     private fun updateUI(user: FirebaseUser?) {
         if (user != null) {
