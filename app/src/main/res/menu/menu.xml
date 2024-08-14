@@ -3,12 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/addUserFragment"
-        android:icon="@android:drawable/ic_input_add"
-        android:title="Add"
-        app:showAsAction="always" />
-
-    <item
         android:id="@+id/action_edit_profile"
         android:title="Edit Profile"
         android:orderInCategory="100"

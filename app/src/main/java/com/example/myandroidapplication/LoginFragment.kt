@@ -63,9 +63,9 @@ class LoginFragment : Fragment() {
         }
 
         // Set click listener for other button
-        view.findViewById<Button>(R.id.otherButton).setOnClickListener {
-            // Handle other button action here
-        }
+//        view.findViewById<Button>(R.id.otherButton).setOnClickListener {
+//            // Handle other button action here
+//        }
     }
 
     private fun signIn() {

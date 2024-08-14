@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
-import com.google.android.material.bottomnavigation.BottomNavigationView
+//import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
@@ -31,9 +31,9 @@ class MainActivity : AppCompatActivity() {
             NavigationUI.setupActionBarWithNavController(this, it)
         }
 
-        val bottomNavigationView: BottomNavigationView =
-            findViewById(R.id.mainActivityBottomNavigationView)
-        navController?.let { NavigationUI.setupWithNavController(bottomNavigationView, it) }
+//        val bottomNavigationView: BottomNavigationView =
+//            findViewById(R.id.mainActivityBottomNavigationView)
+//        navController?.let { NavigationUI.setupWithNavController(bottomNavigationView, it) }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -56,11 +56,6 @@ class MainActivity : AppCompatActivity() {
 
             R.id.action_sign_in -> {
                 navController?.navigate(R.id.action_studentsFragment_to_loginFragment)
-                true
-            }
-
-            R.id.addUserFragment -> {
-                navController?.navigate(R.id.action_global_addStudentFragment)
                 true
             }
 
