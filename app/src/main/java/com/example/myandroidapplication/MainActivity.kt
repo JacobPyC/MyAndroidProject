@@ -1,10 +1,12 @@
 package com.example.myandroidapplication
 
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -31,7 +33,15 @@ class MainActivity : AppCompatActivity() {
         navController?.let {
             NavigationUI.setupActionBarWithNavController(this, it)
         }
-
+        val currentUser = auth.currentUser
+        if(currentUser == null) {
+            navController?.navigate(R.id.action_studentsFragment_to_loginFragment)
+        }
+//        else
+//        {
+//            updateUI(currentUser)
+//            navController?.navigate(R.id.action_studentsFragment_to_allPostsFragment)
+//        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -54,11 +64,12 @@ class MainActivity : AppCompatActivity() {
 
             R.id.action_sign_in -> {
 
-                navController?.navigate(R.id.action_studentsFragment_to_signInFragment)
+                navController?.navigate(R.id.action_studentsFragment_to_loginFragment)
                 true
             }
 
             R.id.action_all_posts -> {
+
                 navController?.navigate(R.id.action_studentsFragment_to_allPostsFragment)
                 true
             }
@@ -101,7 +112,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun signOut() {
         FirebaseAuth.getInstance().signOut()
-        updateUI(null)
+        invalidateOptionsMenu()
+        navController?.navigate(R.id.action_studentsFragment_to_loginFragment)
     }
 
     private fun updateUI(user: FirebaseUser?) {

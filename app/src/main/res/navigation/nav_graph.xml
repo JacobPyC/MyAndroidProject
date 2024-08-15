@@ -3,32 +3,34 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/studentsFragment">
+    app:startDestination="@id/allPostsFragment">
+
+    <action
+        android:id="@+id/action_studentsFragment_to_blueFragment"
+        app:destination="@id/blueFragment" />
+
+    <action
+        android:id="@+id/action_studentsFragment_to_allPostsFragment"
+        app:destination="@id/allPostsFragment" />
+    <action
+        android:id="@+id/action_studentsFragment_to_userPostsFragment"
+        app:destination="@id/userPostsFragment" />
+    <action
+        android:id="@+id/action_studentsFragment_to_editProfileFragment"
+        app:destination="@id/editProfileFragment" />
+    <action
+        android:id="@+id/action_studentsFragment_to_signInFragment"
+        app:destination="@id/signInFragment" />
+    <action
+        android:id="@+id/action_studentsFragment_to_loginFragment"
+        app:destination="@id/loginFragment" />
 
     <!-- Students Fragment -->
     <fragment
         android:id="@+id/studentsFragment"
         android:name="com.example.myandroidapplication.Modules.Students.StudentsFragment"
-        android:label="Students List"
-        tools:layout="@layout/fragment_students">
-        <action
-            android:id="@+id/action_studentsFragment_to_blueFragment"
-            app:destination="@id/blueFragment" />
-        <action
-            android:id="@+id/action_studentsFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
-        <action
-            android:id="@+id/action_studentsFragment_to_allPostsFragment"
-            app:destination="@id/allPostsFragment" />
-        <action
-            android:id="@+id/action_studentsFragment_to_userPostsFragment"
-            app:destination="@id/userPostsFragment" />
-        <action
-            android:id="@+id/action_studentsFragment_to_editProfileFragment"
-            app:destination="@id/editProfileFragment" />
-        <action
-            android:id="@+id/action_studentsFragment_to_signInFragment"
-            app:destination="@id/signInFragment" />
+        android:label="Home"
+        tools:layout="@layout/fragment_all_posts">
 
     </fragment>
 

@@ -28,3 +28,62 @@
         android:layout_height="wrap_content"
         android:text="Delete" />
 </LinearLayout>
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<androidx.constraintlayout.widget.ConstraintLayout-->
+<!--    xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:padding="16dp">-->
+
+<!--    &lt;!&ndash; Post Image &ndash;&gt;-->
+<!--    <com.google.android.material.imageview.ShapeableImageView-->
+<!--        android:id="@+id/image_view_post"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="200dp"-->
+<!--        android:src="@drawable/ic_placeholder"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintBottom_toTopOf="@id/text_view_post_content" />-->
+
+<!--    &lt;!&ndash; Post Content &ndash;&gt;-->
+<!--    <com.google.android.material.textview.MaterialTextView-->
+<!--        android:id="@+id/text_view_post_content"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Post Content"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/image_view_post"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintBottom_toTopOf="@id/button_edit_post"/>-->
+<!--&lt;!&ndash;        app:lineSpacingExtra="4dp"/>&ndash;&gt;-->
+<!--&lt;!&ndash;        app:lineSpacingMultiplier="1.2"/>&ndash;&gt;-->
+
+<!--    &lt;!&ndash; Edit Button &ndash;&gt;-->
+<!--    <com.google.android.material.button.MaterialButton-->
+<!--        android:id="@+id/button_edit_post"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Edit"-->
+<!--        style="@style/Widget.MaterialComponents.Button"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/text_view_post_content"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toStartOf="@id/button_delete_post"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"/>-->
+
+<!--    &lt;!&ndash; Delete Button &ndash;&gt;-->
+<!--    <com.google.android.material.button.MaterialButton-->
+<!--        android:id="@+id/button_delete_post"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Delete"-->
+<!--        style="@style/Widget.MaterialComponents.Button"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/text_view_post_content"-->
+<!--        app:layout_constraintStart_toEndOf="@id/button_edit_post"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"/>-->
+
+<!--</androidx.constraintlayout.widget.ConstraintLayout>-->
