@@ -30,10 +30,6 @@ class MainActivity : AppCompatActivity() {
         navController?.let {
             NavigationUI.setupActionBarWithNavController(this, it)
         }
-
-        val bottomNavigationView: BottomNavigationView =
-            findViewById(R.id.mainActivityBottomNavigationView)
-        navController?.let { NavigationUI.setupWithNavController(bottomNavigationView, it) }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -55,22 +51,17 @@ class MainActivity : AppCompatActivity() {
             }
 
             R.id.action_sign_in -> {
-                navController?.navigate(R.id.action_studentsFragment_to_loginFragment)
-                true
-            }
-
-            R.id.addUserFragment -> {
-                navController?.navigate(R.id.action_global_addStudentFragment)
+                navController?.navigate(R.id.loginFragment)  // Navigate to login fragment
                 true
             }
 
             R.id.action_all_posts -> {
-                navController?.navigate(R.id.action_studentsFragment_to_allPostsFragment)
+                navController?.navigate(R.id.allPostsFragment) // Navigate to all posts fragment
                 true
             }
 
             R.id.action_user_posts -> {
-                navController?.navigate(R.id.action_studentsFragment_to_userPostsFragment)
+                navController?.navigate(R.id.userPostsFragment) // Navigate to user posts fragment
                 true
             }
 
@@ -84,7 +75,7 @@ class MainActivity : AppCompatActivity() {
                     putString("userImageUri", userImageUri)
                 }
 
-                navController?.navigate(R.id.action_studentsFragment_to_editProfileFragment, bundle)
+                navController?.navigate(R.id.editProfileFragment, bundle)
                 true
             }
 
@@ -148,4 +139,3 @@ class MainActivity : AppCompatActivity() {
         return navController?.navigateUp() ?: super.onSupportNavigateUp()
     }
 }
-

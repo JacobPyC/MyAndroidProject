@@ -145,8 +145,6 @@ class LoginFragment : Fragment() {
             Log.d(TAG, "User signed in: ${user.displayName}")
             // Notify MainActivity to refresh menu
             (activity as MainActivity).invalidateOptionsMenu()
-            // Navigate to studentsFragment
-            findNavController().navigate(R.id.action_loginFragment_to_studentsFragment)
         } else {
             Log.d(TAG, "No user signed in")
             // Prompt user to try again or show a message

@@ -4,14 +4,12 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.example.myandroidapplication.Model.Student
 import com.example.myandroidapplication.base.MyApplication
 import com.example.myandroidapplication.Model.Post
 
-@Database(entities = [Student::class, Post::class], version = 5)
+@Database(entities = [ Post::class], version = 6)
 @TypeConverters(TimestampConverter::class)
 abstract class AppLocalDbRepository : RoomDatabase() {
-    abstract fun studentDao(): StudentDao
     abstract fun postDao(): PostDao
 }
 

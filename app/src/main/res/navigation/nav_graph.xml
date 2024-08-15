@@ -3,53 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/studentsFragment">
-
-    <!-- Students Fragment -->
-    <fragment
-        android:id="@+id/studentsFragment"
-        android:name="com.example.myandroidapplication.Modules.Students.StudentsFragment"
-        android:label="Students List"
-        tools:layout="@layout/fragment_students">
-        <action
-            android:id="@+id/action_studentsFragment_to_blueFragment"
-            app:destination="@id/blueFragment" />
-        <action
-            android:id="@+id/action_studentsFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
-        <action
-            android:id="@+id/action_studentsFragment_to_allPostsFragment"
-            app:destination="@id/allPostsFragment" />
-        <action
-            android:id="@+id/action_studentsFragment_to_userPostsFragment"
-            app:destination="@id/userPostsFragment" />
-        <action
-            android:id="@+id/action_studentsFragment_to_editProfileFragment"
-            app:destination="@id/editProfileFragment" />
-    </fragment>
-
-
-
-    <!-- Blue Fragment -->
-    <fragment
-        android:id="@+id/blueFragment"
-        android:name="com.example.myandroidapplication.BlueFragment"
-        android:label="Blue Fragment"
-        tools:layout="@layout/fragment_blue">
-        <argument
-            android:name="TITLE"
-            app:argType="string" />
-    </fragment>
-
-    <!-- Add Student Fragment -->
-    <fragment
-        android:id="@+id/addStudentFragment"
-        android:name="com.example.myandroidapplication.Modules.AddStudent.AddStudentFragment"
-        android:label="Add Student"
-        tools:layout="@layout/fragment_add_student" />
-    <action
-        android:id="@+id/action_global_addStudentFragment"
-        app:destination="@id/addStudentFragment" />
+    app:startDestination="@id/loginFragment">
 
     <!-- Login Fragment -->
     <fragment
@@ -58,8 +12,14 @@
         android:label="Login"
         tools:layout="@layout/fragment_login">
         <action
-            android:id="@+id/action_loginFragment_to_studentsFragment"
-            app:destination="@id/studentsFragment" />
+            android:id="@+id/action_loginFragment_to_allPostsFragment"
+            app:destination="@id/allPostsFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_userPostsFragment"
+            app:destination="@id/userPostsFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
     </fragment>
 
     <!-- All Posts Fragment -->
@@ -143,6 +103,5 @@
         android:name="com.example.myandroidapplication.GifListFragment"
         android:label="GIF List"
         tools:layout="@layout/fragment_gif_list" />
-
 
 </navigation>

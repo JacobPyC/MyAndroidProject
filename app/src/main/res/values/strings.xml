@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">My Android Application</string>
-    <string name="add_student">Add Student</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="your_web_client_id">1027110826000-i30i46qeco68g929tcmq9iqigfq9m2q1.apps.googleusercontent.com</string>
